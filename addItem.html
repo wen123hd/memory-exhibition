@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>提交我的老物件</title>
+<link rel="stylesheet" href="css/style.css">
+<!-- 内联首帧背景，避免外链 CSS 加载前的白屏闪烁 -->
+<style>html,body{background:#fffdf9;}</style>
+</head>
+<body>
+<header>
+    <div class="logo-title">老物件记忆展览馆</div>
+    <div class="nav-box">
+        <a href="index.html">首页</a>
+        <a href="collection.html">馆藏目录</a>
+        <a href="story.html">年代故事</a>
+        <a href="gallery.html">影像展厅</a>
+        <a href="addItem.html">提交藏品</a>
+    </div>
+</header>
+<main class="container">
+    <h2>分享你家里的老物件</h2>
+    <div class="content-box">
+        <form id="itemForm">
+            <div>
+                <label>你的昵称：</label>
+                <input type="text" id="authorName" placeholder="提交人的昵称">
+            </div>
+            <div>
+                <label>物件名称：</label>
+                <input type="text" id="itemName" placeholder="例如：铝制饭盒">
+            </div>
+            <div>
+                <label>所属年代：</label>
+                <input type="text" id="itemYear" placeholder="例如：90年代">
+            </div>
+            <div>
+                <label>物件介绍：</label>
+                <textarea id="itemDesc" rows="4" placeholder="说说它的来历和故事"></textarea>
+            </div>
+            <div>
+                <label>物件背后的故事（选填，可写回忆）：</label>
+                <textarea id="itemStory" rows="3" placeholder="这件物件背后，藏着怎样的回忆"></textarea>
+            </div>
+            <div>
+                <label>上传物件图片：</label>
+                <input type="file" id="itemImg" >
+            </div>
+            <button type="submit">提交藏品到展馆</button>
+        </form>
+        <p style="margin-top:15px;color:#666;">提交后，藏品会出现在馆藏和影像展厅，其他访客可以在藏品下方评论</p>
+    </div>
+</main>
+<footer>
+<p>计算机工程基础实践训练期末大作业</p>
+</footer>
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>影像展厅</title>
+<link rel="stylesheet" href="css/style.css">
+<!-- 内联首帧背景，避免外链 CSS 加载前的白屏闪烁 -->
+<style>html,body{background:#fffdf9;}</style>
+</head>
+<body>
+<header>
+    <div class="logo-title">老物件记忆展览馆</div>
+    <div class="nav-box">
+        <a href="index.html">首页</a>
+        <a href="collection.html">馆藏目录</a>
+        <a href="story.html">年代故事</a>
+        <a href="gallery.html">影像展厅</a>
+        <a href="addItem.html">提交藏品</a>
+    </div>
+</header>
+<main class="container">
+    <h2 style="text-align:center;margin:30px 0;color:#784212;">老物件影像展厅</h2>
+    <div class="carousel-wrap">
+        <button class="carousel-btn prev">&lt;</button>
+        <div class="carousel-track" id="galleryBox">
+            <!-- JS渲染轮播项 -->
+        </div>
+        <button class="carousel-btn next">&gt;</button>
+    </div>
+</main>
+<footer>
+<p>第二小组｜计算机工程基础实践训练期末大作业</p>
+</footer>
+<script src="js/main.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,426 @@
+*{margin:0;padding:0;box-sizing:border-box;font-family:"Microsoft Yahei",sans-serif;}
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 40px;
+    background-color: #784212;
+    color: #fff;
+}
+.logo-title {
+    font-size: 26px;
+    font-weight: bold;
+}
+.nav-box a {
+    color: #ffffff;
+    text-decoration: none;
+    margin-left: 26px;
+    font-size: 16px;
+}
+.nav-box a:hover {
+    text-decoration: underline;
+}
+.container{max-width:1100px;margin:30px auto;padding:0 20px;}
+/* 首页大图区（原 index.html 内联的 .banner 合并至此，外观保持不变） */
+.banner{
+    width:100%;
+    height:500px;
+    background:url("../images/bg.png") center / cover no-repeat;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    color:#fff;
+}
+.content-box{margin-top:20px;line-height:1.8;}
+
+/* ========== 焦点轮播（Coverflow 左右侧滑，中间亮两边暗） ========== */
+.carousel-wrap{
+  position:relative;
+  width:90%;
+  max-width:900px;
+  height:420px;
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  overflow:hidden;
+}
+.carousel-track{
+  display:flex;
+  width:100%;
+  height:100%;
+  align-items:center;
+  justify-content:center;
+  perspective: 1200px;
+}
+.carousel-item{
+  position:absolute;
+  width:52%;
+  height:320px;
+  transition: all 0.5s ease;
+  border-radius:10px;
+  overflow:hidden;
+  opacity:0;
+  z-index:1;
+}
+.carousel-item img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.carousel-item .noimg-text{
+  width:100%;
+  height:100%;
+  background:#fff8ef;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:24px;
+  color:#784212;
+}
+.carousel-item.active{
+  transform: translateX(0) scale(1);
+  z-index:3;
+  opacity:1;
+}
+.carousel-item.prev-item{
+  transform: translateX(-65%) scale(0.8);
+  z-index:2;
+  opacity:0.45;
+}
+.carousel-item.next-item{
+  transform: translateX(65%) scale(0.8);
+  z-index:2;
+  opacity:0.45;
+}
+.carousel-btn{
+  position:absolute;
+  z-index:10;
+  border:none;
+  background:transparent;
+  color:#784212;
+  font-size:48px;
+  cursor:pointer;
+  top:50%;
+  transform:translateY(-50%);
+  padding:0 8px;
+  line-height:1;
+}
+.prev{left:10px;}
+.next{right:10px;}
+
+
+
+
+
+form div{margin:12px 0;}
+input,textarea{width:100%;padding:10px;border:1px #b8a28c solid;border-radius:4px;margin-top:6px;background:#fffdf9;}
+button{padding:10px 20px;background:#784212;color:#fff;border:none;border-radius:4px;cursor:pointer;}
+
+footer{background:#442c17;color:#fff;text-align:center;padding:15px;margin-top:40px;font-size:14px;}
+/* 首页：滚动文字栏正下方，footer 贴住不留白（原 index.html 内联 footer 合并至此） */
+.marquee-container + footer{margin-top:0;padding:22px;}
+.btn-more {
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    font-size: 18px;
+    padding: 15px 48px;
+    background: linear-gradient(135deg, #b07c4f, #784212);
+    border: 1px solid #e2c8ac;
+    border-radius: 40px;
+    box-shadow: 0 4px 10px rgba(120, 66, 18, 0.25);
+    transition: transform 0.08s ease, box-shadow 0.08s ease;
+}
+.btn-more:active {
+    transform: scale(0.94);
+    box-shadow: 0 2px 4px rgba(120, 66, 18, 0.12);
+}
+/* 松开之后弹簧回弹动画 */
+.btn-more.spring {
+    animation: springBack 0.4s cubic-bezier(0.23, 1.2, 0.32, 1);
+}
+@keyframes springBack {
+    0% { transform: scale(0.94); }
+    100% { transform: scale(1); }
+}
+
+
+/* ========== 2. 底部滚动文字栏：深棕底色、米黄字、从右往左跑、鼠标悬停暂停 ========== */
+.marquee-text {
+  display: inline-block;
+  white-space: nowrap;
+  animation: runLeft 20s linear infinite;
+  color: #fff8dc;
+  font-size:16px;
+  cursor:pointer;
+}
+.marquee-text:hover {
+  animation-play-state: paused;
+}
+@keyframes runLeft {
+  0% { transform: translateX(100vw); }
+  100% { transform: translateX(-100%); }
+}
+
+/* ========== 3. 【物载时光+副标题】上浮淡入入场动画 ========== */
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  100% {
+    opacity:1;
+    transform: translateY(0);
+  }
+}
+
+/* ========== 4. 首页背景图 + 半透明遮罩 ========== */
+.home-bg-wrap{
+  position:relative;
+}
+.home-bg-wrap::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.38);
+  z-index:1;
+}
+.home-bg-wrap > *{
+  position:relative;
+  z-index:2;
+}
+
+/* ========== 5. 精选馆藏 拍立得卡片、错落歪斜 ========== */
+.polaroid-box{
+  display:flex;
+  justify-content:center;
+  gap:36px;
+  margin:35px 0;
+  flex-wrap:wrap;
+}
+.polaroid-card{
+  width:220px;
+  padding:12px 12px 32px;
+  background:#fff;
+  box-shadow:0 4px 12px #00000022;
+  border-radius:4px;
+  transition: transform 0.25s ease;
+}
+.polaroid-card img{
+  width:100%;
+  height:170px;
+  object-fit:cover;
+}
+.polaroid-card:nth-child(1){
+  transform: rotate(-3.5deg) translateY(-8px);
+}
+.polaroid-card:nth-child(2){
+  transform: rotate(2deg) translateY(4px);
+}
+.polaroid-card:nth-child(3){
+  transform: rotate(-1.8deg) translateY(-6px);
+}
+.polaroid-card:hover{
+  transform: rotate(0deg) scale(1.04);
+  z-index:10;
+}
+.polaroid-card p{
+  text-align:center;
+  margin:8px 0 0;
+  font-size:14px;
+  color:#555;
+}
+
+/* ========== 页面切换：浏览器原生视图过渡（导航期间保留旧页面快照，全程无白屏）========== */
+@view-transition {
+  navigation: auto;
+}
+
+/* 统一底层背景色（不支持视图过渡的浏览器也能兜底） */
+html { background-color: #fffdf9; }
+
+/* 旧页面：淡出并稍微上移 */
+::view-transition-old(root) {
+  animation: vtPageOut 0.16s cubic-bezier(.4, 0, .2, 1) both;
+}
+/* 新页面：从下方淡入 */
+::view-transition-new(root) {
+  animation: vtPageIn 0.18s cubic-bezier(.4, 0, .2, 1) both;
+}
+@keyframes vtPageOut {
+  from { opacity: 1; transform: translateY(0); }
+  to   { opacity: 0; transform: translateY(-16px); }
+}
+@keyframes vtPageIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+
+/* ========== 馆藏目录：搜索 + 三列信息 + 右侧数量/悬停预览 ========== */
+.catalog-layout{ display:flex; gap:24px; align-items:flex-start; }
+.catalog-main{ flex:1; min-width:0; }
+.catalog-side{ width:280px; flex:0 0 280px; position:sticky; top:20px; }
+
+.catalog-toolbar{ display:flex; align-items:center; gap:12px; margin-bottom:14px; }
+.catalog-search{
+  flex:1; min-width:0; margin-top:0; padding:10px 14px;
+  border:1px solid #b8a28c; border-radius:6px; background:#fffdf9;
+  font-size:15px; color:#52351f;
+}
+.catalog-search:focus{ outline:none; border-color:#784212; box-shadow:0 0 0 3px rgba(120,66,18,.12); }
+.catalog-hint{ font-size:13px; color:#8a6b4f; white-space:nowrap; }
+
+.catalog-head, .row-line{
+  display:grid;
+  grid-template-columns: 2fr 1.1fr 1fr;
+  align-items:center; gap:10px;
+}
+.catalog-head{
+  padding:10px 16px; background:#784212; color:#fff8dc;
+  font-size:14px; font-weight:bold; letter-spacing:1px;
+  border-radius:6px 6px 0 0;
+}
+.catalog-row{
+  border:1px solid #e3d5c3; border-top:none;
+  background:#fffdf9; transition:background .15s ease;
+}
+.catalog-row:last-child{ border-radius:0 0 6px 6px; }
+.catalog-row:hover{ background:#fff3e2; }
+.row-line{ padding:12px 16px; font-size:15px; color:#52351f; }
+.c-name{ font-weight:600; }
+.c-year, .c-author{ color:#7a5c40; }
+.catalog-empty{ padding:30px; text-align:center; color:#8a6b4f; border:1px dashed #c9b8a6; background:#fffdf9; }
+
+.side-count{
+  background:#fff8ef; border:1px solid #e3d5c3; border-radius:8px;
+  padding:16px 18px; margin-bottom:16px; text-align:center;
+}
+.side-count-label{ font-size:14px; color:#8a6b4f; letter-spacing:2px; }
+.side-count-value{ font-size:38px; color:#784212; font-weight:bold; line-height:1.35; }
+.side-count-value small{ font-size:15px; font-weight:normal; color:#8a6b4f; }
+
+.side-preview{ background:#fff8ef; border:1px solid #e3d5c3; border-radius:8px; padding:14px; }
+.side-preview-label{ font-size:13px; color:#8a6b4f; margin-bottom:10px; letter-spacing:1px; }
+.side-preview-frame{
+  width:100%; aspect-ratio:4 / 3; background:#f1e7d9; border-radius:6px;
+  overflow:hidden; display:flex; align-items:center; justify-content:center;
+}
+.side-preview-frame img{ width:100%; height:100%; object-fit:cover; display:block; }
+.side-preview-empty{ font-size:13px; color:#a98a6b; text-align:center; line-height:1.8; }
+.side-preview-noimg{ font-size:18px; color:#784212; text-align:center; padding:10px; }
+.side-preview-caption{ margin-top:10px; font-size:13px; color:#6b4f36; text-align:center; min-height:18px; }
+
+@media(max-width:768px){
+  .catalog-layout{ flex-direction:column; }
+  .catalog-side{ width:100%; flex:auto; position:static; }
+  .catalog-head, .row-line{ grid-template-columns:1.4fr 1fr 1fr; gap:6px; font-size:13px; padding:10px; }
+}
+
+
+/* ========== 年代故事：卡片网格 ========== */
+.story-lead{ text-align:center; color:#8a6b4f; font-size:15px; margin-bottom:26px; }
+.story-grid{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:26px;
+  padding:0 20px;
+}
+.story-card{
+  background:#fffdf9; border:1px solid #e3d5c3; border-radius:10px;
+  overflow:hidden; box-shadow:0 4px 14px rgba(120,66,18,.1);
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.story-card:hover{ transform:translateY(-4px); box-shadow:0 10px 22px rgba(120,66,18,.18); }
+.story-card-media{ width:100%; height:210px; cursor:pointer; overflow:hidden; background:#f1e7d9; }
+.story-card-img{ width:100%; height:100%; object-fit:cover; display:block; }
+.story-card-noimg{
+  display:flex; align-items:center; justify-content:center;
+  font-size:22px; color:#784212;
+}
+.story-card-name{
+  text-align:center; font-size:17px; color:#52351f; font-weight:600;
+  padding:14px 10px; margin:0;
+}
+
+/* ========== 详情弹层 ========== */
+.story-detail{
+  position:fixed; inset:0; z-index:1000;
+  background:rgba(52,36,22,.62);
+  display:flex; align-items:center; justify-content:center;
+  padding:30px;
+  opacity:0; visibility:hidden;
+  transition:opacity .25s ease, visibility .25s ease;
+}
+.story-detail.show{ opacity:1; visibility:visible; }
+.story-detail-panel{
+  position:relative;
+  width:min(960px, 96vw); max-height:92vh; overflow-y:auto;
+  background:#fffdf9; border-radius:14px;
+  box-shadow:0 20px 60px rgba(0,0,0,.35);
+  transition:opacity .25s ease;
+}
+
+.detail-hero{ position:relative; width:100%; height:460px; background:#efe3d2; border-radius:14px 14px 0 0; overflow:hidden; display:flex; align-items:center; justify-content:center; }
+.detail-hero-img{ max-width:100%; max-height:100%; width:auto; height:auto; object-fit:contain; display:block; }
+.detail-hero-noimg{ display:flex; align-items:center; justify-content:center; font-size:40px; color:#784212; }
+
+/* 详情弹层左下角圆形返回按钮 */
+.story-back-btn{
+  position:absolute; left:26px; bottom:26px; z-index:3;
+  width:56px; height:56px; border-radius:50%;
+  background:#784212; color:#fff; border:2px solid #fff8dc;
+  font-size:28px; line-height:1; cursor:pointer;
+  box-shadow:0 6px 18px rgba(0,0,0,.35);
+  display:flex; align-items:center; justify-content:center;
+  transition:transform .15s ease, background .15s ease;
+}
+.story-back-btn:hover{ transform:scale(1.09); background:#5c3212; }
+
+.detail-body{ padding:26px 34px 34px; }
+.detail-name{ font-size:28px; color:#784212; margin:0 0 10px; }
+.detail-meta{ display:flex; gap:26px; flex-wrap:wrap; font-size:15px; color:#8a6b4f; margin-bottom:22px; }
+.detail-section{ margin-top:20px; }
+.detail-section h4{
+  font-size:17px; color:#784212; margin:0 0 8px;
+  padding-left:10px; border-left:4px solid #b07c4f;
+}
+.detail-section p{ font-size:15px; line-height:1.85; color:#5c4632; margin:0; }
+.detail-story{ background:#fff8ef; border-radius:8px; padding:14px 16px; }
+.story-no-comment{ color:#a98a6b; font-size:14px; }
+
+.comment-section{ border-top:1px dashed #c9b8a6; padding-top:20px; margin-top:28px; }
+.detail-comments{ margin:10px 0; }
+.comment-item{ background:#fff; padding:9px 12px; margin:8px 0; border-radius:6px; font-size:14px; color:#5c4632; border:1px solid #eee0cf; }
+.comment-form{ display:flex; gap:8px; flex-wrap:wrap; margin-top:12px; }
+.comment-form input{ flex:1; min-width:140px; width:auto; margin-top:0; padding:9px 11px; border:1px solid #b8a28c; border-radius:5px; background:#fffdf9; }
+.comment-form button{ padding:9px 18px; background:#784212; color:#fff; border:none; border-radius:5px; cursor:pointer; }
+
+/* 飞行中的克隆图片 */
+.story-flying-img{
+  position:fixed; z-index:2000; object-fit:contain;
+  margin:0; border-radius:8px;
+  box-shadow:0 12px 30px rgba(0,0,0,.3);
+  pointer-events:none;
+}
+.story-flying-noimg{
+  background:#f1e7d9; display:flex; align-items:center; justify-content:center;
+  font-size:22px; color:#784212; text-align:center; padding:8px;
+}
+.story-flying-img.flying{
+  transition:left .45s cubic-bezier(.22,.8,.25,1),
+             top .45s cubic-bezier(.22,.8,.25,1),
+             width .45s cubic-bezier(.22,.8,.25,1),
+             height .45s cubic-bezier(.22,.8,.25,1),
+             border-radius .45s ease;
+  border-radius:14px;
+}
+
+@media(max-width:768px){
+  .story-grid{ grid-template-columns:repeat(2, 1fr); gap:16px; padding:0 14px; }
+  .story-card-media{ height:160px; }
+  .detail-hero{ height:340px; }
+  .detail-body{ padding:20px; }
+}

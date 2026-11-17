@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>老物件记忆展览馆</title>
+<link rel="stylesheet" href="css/style.css">
+<!-- 内联首帧背景，避免外链 CSS 加载前的白屏闪烁 -->
+<style>html,body{background:#fffdf9;}</style>
+<style>
+/* ========== 标题上浮淡入动画（@keyframes fadeUp 见 style.css） ========== */
+.banner-text-wrap {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    animation: fadeUp 0.9s ease-out forwards;
+    opacity: 0;
+}
+/* ========== 滚动文字（.marquee-text 的动画/字号见 style.css） ========== */
+.marquee-container {
+    overflow: hidden;
+    padding: 12px 0;
+    background-color: #8b541d;
+}
+/* 背景大图区域（.banner 与遮罩见 style.css） */
+.big-text {
+    font-size: 52px;
+    letter-spacing: 8px;
+    margin-bottom: 14px;
+	font-family: "Noto Serif SC", serif;
+}
+.small-text {
+    font-size: 19px;
+    margin-bottom: 42px;
+	font-family: "Noto Serif SC", serif;
+}
+
+/* 关于本站，压缩padding，减少占用高度 */
+.about-section {
+    padding: 25px 20px;
+    text-align: center;
+    color: #52351f;
+}
+.about-title {
+    font-size: 21px;
+    margin-bottom: 12px;
+}
+.about-content {
+    font-size: 14px;
+    max-width: 720px;
+    margin: 0 auto;
+    line-height: 1.85;
+}
+/* ========== 精选馆藏 - 拍立得卡片（样式见 style.css） ========== */
+.polaroid-title{
+  text-align:center;
+  color:#784212;
+  font-size:21px;
+  margin-top:10px;
+}
+
+/* ========== 关于本站 / 精选馆藏 之间的装饰分隔 ========== */
+.section-separator{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:14px;
+    margin:22px auto 6px;
+    max-width:460px;
+}
+.section-separator .sep-line{
+    flex:1;
+    height:1px;
+    background:linear-gradient(90deg, rgba(201,184,166,0), #c9b8a6, rgba(201,184,166,0));
+}
+.section-separator .sep-diamond{
+    width:9px;
+    height:9px;
+    background:#b07c4f;
+    transform:rotate(45deg);
+    flex:0 0 auto;
+    box-shadow:0 0 0 4px #fffdf9;
+}
+</style>
+</head>
+<body>
+<header>
+    <div class="logo-title">老物件记忆展览馆</div>
+    <div class="nav-box">
+        <a href="index.html">首页</a>
+        <a href="collection.html">馆藏目录</a>
+        <a href="story.html">年代故事</a>
+        <a href="gallery.html">影像展厅</a>
+        <a href="addItem.html">提交藏品</a>
+    </div>
+</header>
+<div class="banner home-bg-wrap">
+    <div class="banner-text-wrap">
+        <div class="big-text">物载时光</div>
+        <div class="small-text">愿你循着旧物的痕迹，打捞一段缓缓流淌的岁月。</div>
+        <a href="gallery.html" class="btn-more">了解更多</a>
+    </div>
+</div>
+
+<div class="about-section">
+    <div class="about-title">关于本站</div>
+    <div class="about-content">
+本展馆是存放老物件记忆的线上空间，我们收集大家珍藏的旧物与故事，你可以提交藏品、浏览展品，在器物的痕迹里，品读慢慢沉淀的岁月。
+    </div>
+</div>
+
+<!-- 关于本站 / 精选馆藏 装饰分隔 -->
+<div class="section-separator">
+    <span class="sep-line"></span>
+    <span class="sep-diamond"></span>
+    <span class="sep-line"></span>
+</div>
+
+<!-- 新增精选馆藏板块 -->
+<div>
+    <h3 class="polaroid-title">精选馆藏</h3>
+    <div class="polaroid-box" id="polaroidContainer"></div>
+</div>
+
+<!-- 滚动文字，已经挪到这里：精选馆藏下面，footer上面 -->
+<div class="marquee-container">
+    <div class="marquee-text">在这里分享属于你的老回忆，共赴一场温柔的时光之约</div>
+</div>
+
+<footer>
+    <p>计算机工程基础实践训练期末大作业</p>
+</footer>
+
+<script src="js/main.js"></script>
+<!-- 首页渲染（含精选馆藏拍立得卡片）统一由 js/main.js 的 window.onload 处理 -->
+</body>
+</html>
+
